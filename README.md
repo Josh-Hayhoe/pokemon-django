@@ -61,4 +61,7 @@ Deactivate the virtual environment:
 deactivate
 ```
 
+Before activating virtual environment:
+Set-ExecutionPolicy Unrestricted -Scope Process
+
 
