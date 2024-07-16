@@ -2,7 +2,7 @@
 
 ## Requirements
 
-This application requires Python 3 
+This application requires Python 3.
 
 ## Good to know
 
