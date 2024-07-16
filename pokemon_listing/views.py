@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-import requests
+from django.template import loader
 # Create our views here.
 
 # create a template (with import button)
@@ -9,4 +9,6 @@ import requests
 # create method in this view to get the pokemon from the pokeAPI
 
 def index(request):
-    return HttpResponse(f"Hello world - This is the pokemon listing")
+    template = loader.get_template("listing/index.html")
+    context = {}
+    return HttpResponse(template.render(context, request))
