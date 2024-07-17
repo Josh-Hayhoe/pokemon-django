@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 import requests
 from pokemon_listing.models import Name
+from django.core import serializers
 # Create our views here.
 
 # create a template (with import button)
@@ -17,9 +18,13 @@ def button(request):
     return HttpResponse(template.render(context, request))
 
 def fetch_pokemon(request):
+    num =0
+    poke_list = ""
     r = requests.get("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
-#for item in r:
-        #name = Name(name=item[0])
-        #name.save()
-        #Able to save to the db in the shell but not here, plus it didnt show up in the physical db anyway
-    return HttpResponse(r)
+    response_data = r.json()
+    for item in response_data["results"]:
+        name = response_data["results"][num]["name"] + "\n"
+        poke_list += name
+        num+=1
+    return HttpResponse(poke_list)
+
