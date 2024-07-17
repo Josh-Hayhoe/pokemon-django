@@ -17,7 +17,8 @@ def fetchPokemon(request):
     data = response.json()
 
     list = []
-    # Iterate over the JSON and create models
+    # Iterate over the JSON and create models, persist data to DB
+    # This is noticably slow at the moment, but it works at this stage as a starting point
     for index, pokemon in enumerate(data['results']):
         res = requests.get(pokemon['url'])
         itemMeta = res.json()
