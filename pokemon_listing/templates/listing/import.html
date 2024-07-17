@@ -1,8 +1,33 @@
-<div>
-<!--    {{ pokemon }}-->
-    <ul>
-        {% for poke in pokemon.results %}
-        <li>{{ poke.name }}</li>
-        {% endfor %}
-    </ul>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Simple Pokedex</div>
+
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Sprite</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in pokemon %}
+                            <tr>
+                                <th>{{ item.number }}</th>
+                                <td>{{ item.name }}</td>
+                                <td>
+                                    <img src="{{ item.sprite_url }}" alt="{{ item.name }}">
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
