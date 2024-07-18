@@ -21,6 +21,7 @@ def button(request):
 def fetch_pokemon(request):
     num =0
     poke_list = ""
+    url = ""
     r = requests.get("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
     response_data = r.json()
     for item in response_data["results"]:
@@ -28,9 +29,11 @@ def fetch_pokemon(request):
         poke_name = response_data["results"][num]["name"]
         #concatenate to string
         poke_list += poke_name + "\n"
+        #get url for more info
+        url = response_data["results"][num]["url"]
         num+=1
         #save pokemon to database
-        name = Name(pokedex_entry = num, name = poke_name)
+        name = Name(pokedex_entry = num, name = poke_name, url = url)
         name.save()
     # "print" onto web page
     return HttpResponse(poke_list)
