@@ -1,3 +1,12 @@
-<ul>
-    <li><a href="{% url 'fetch_pokemon' %}">Import Pokémon</a></li>
-</ul>
+{% extends "master.html" %}
+
+{% block title %}
+  Pokémon Django - Home
+{% endblock %}
+
+
+{% block content %}
+    <ul>
+        <li><a href="{% url 'fetch_pokemon' %}">Import Pokémon</a></li>
+    </ul>
+{% endblock %}
