@@ -4,6 +4,7 @@ from django.template import loader
 import requests
 from pokemon_listing.models import Name
 from django.core import serializers
+from api.views import getData
 # Create our views here.
 
 # create a template (with import button)
